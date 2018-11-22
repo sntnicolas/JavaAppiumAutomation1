@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf14dee7-acec-426f-9b54-85f115585ebc" name="Default Changelist" comment="">
+    <list default="true" id="bf14dee7-acec-426f-9b54-85f115585ebc" name="Default Changelist" comment="Lesson2_Homework1&#10;Создал метод isTextOfSearchAvailable&#10;А также тест testOfMethod, которым проверял работу метода">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FirstTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstTest.java" afterDir="false" />
     </list>
@@ -53,19 +53,19 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2405" />
-          <entry key="txt" value="24" />
+          <entry key="java" value="2815" />
+          <entry key="txt" value="152" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2405" />
-          <entry key="PLAIN_TEXT" value="24" />
+          <entry key="JAVA" value="2815" />
+          <entry key="PLAIN_TEXT" value="152" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
-          <entry key="git.branch.create.new" value="1" />
+          <entry key="git.branch.create.new" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -75,11 +75,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="191" column="26" lean-forward="true" selection-start-line="191" selection-start-column="26" selection-end-line="191" selection-end-column="26" />
+            <state relative-caret-position="161">
+              <caret line="161" column="35" selection-start-line="161" selection-start-column="35" selection-end-line="161" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#firstTest#0;class#FirstTest#0" />
+                <element signature="method#testCompareArticleTitle#0;class#FirstTest#0" />
               </folding>
             </state>
           </provider>
@@ -95,10 +96,15 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="sntnicolas &lt;36814385+sntnicolas@users.noreply.github.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Lesson2_Homework1" />
       </map>
     </option>
   </component>
@@ -151,7 +157,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542892266709" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542903242224" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -169,15 +175,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FirstTest.testOfMethod">
-    <configuration name="FirstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaAppiumAutomation1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FirstTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.FirstTest.testSearchAndCancel">
     <configuration name="FirstTest.firstTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAppiumAutomation1" />
       <option name="PACKAGE_NAME" value="" />
@@ -218,20 +216,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FirstTest.testSearchAndCancel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAppiumAutomation1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FirstTest" />
+      <option name="METHOD_NAME" value="testSearchAndCancel" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.FirstTest" />
-      <item itemvalue="JUnit.FirstTest.firstTest" />
       <item itemvalue="JUnit.FirstTest.testCancelSearch" />
       <item itemvalue="JUnit.FirstTest.testCompareArticleTitle" />
       <item itemvalue="JUnit.FirstTest.testOfMethod" />
+      <item itemvalue="JUnit.FirstTest.testSearchAndCancel" />
+      <item itemvalue="JUnit.FirstTest.firstTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FirstTest.testOfMethod" />
-        <item itemvalue="JUnit.FirstTest.testCompareArticleTitle" />
-        <item itemvalue="JUnit.FirstTest.testCancelSearch" />
-        <item itemvalue="JUnit.FirstTest" />
+        <item itemvalue="JUnit.FirstTest.testSearchAndCancel" />
         <item itemvalue="JUnit.FirstTest.firstTest" />
+        <item itemvalue="JUnit.FirstTest.testCompareArticleTitle" />
+        <item itemvalue="JUnit.FirstTest.testOfMethod" />
+        <item itemvalue="JUnit.FirstTest.testCancelSearch" />
       </list>
     </recent_temporary>
   </component>
@@ -267,39 +275,53 @@
       <option name="project" value="LOCAL" />
       <updated>1542887433047</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Lesson2_Homework1&#10;Создал метод isTextOfSearchAvailable&#10;А также тест testOfMethod, которым проверял работу метода">
+      <created>1542892242382</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1542892242382</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Lesson2_Homework1&#10;Создал метод isTextOfSearchAvailable&#10;А также тест testOfMethod, которым проверял работу метода">
+      <created>1542892300260</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1542892300260</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FirstTest_firstTest - 2018.11.21 at 18h 05m 34s.xml">
-      <configuration name="FirstTest.firstTest" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearchAndCancel - 2018.11.22 at 18h 41m 17s.xml">
+      <configuration name="FirstTest.testSearchAndCancel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2018.11.21 at 19h 14m 53s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearchAndCancel - 2018.11.22 at 18h 43m 49s.xml">
+      <configuration name="FirstTest.testSearchAndCancel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2018.11.21 at 19h 16m 03s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearchAndCancel - 2018.11.22 at 19h 00m 38s.xml">
+      <configuration name="FirstTest.testSearchAndCancel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2018.11.21 at 19h 26m 40s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearchAndCancel - 2018.11.22 at 19h 02m 19s.xml">
+      <configuration name="FirstTest.testSearchAndCancel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest - 2018.11.21 at 19h 27m 48s.xml">
-      <configuration name="FirstTest" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearchAndCancel - 2018.11.22 at 19h 03m 11s.xml">
+      <configuration name="FirstTest.testSearchAndCancel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testCancelSearch - 2018.11.22 at 14h 14m 39s.xml">
-      <configuration name="FirstTest.testCancelSearch" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearchAndCancel - 2018.11.22 at 19h 11m 08s.xml">
+      <configuration name="FirstTest.testSearchAndCancel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testCompareArticleTitle - 2018.11.22 at 14h 27m 55s.xml">
-      <configuration name="FirstTest.testCompareArticleTitle" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearchAndCancel - 2018.11.22 at 19h 11m 51s.xml">
+      <configuration name="FirstTest.testSearchAndCancel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testCompareArticleTitle - 2018.11.22 at 14h 29m 59s.xml">
-      <configuration name="FirstTest.testCompareArticleTitle" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearchAndCancel - 2018.11.22 at 19h 12m 58s.xml">
+      <configuration name="FirstTest.testSearchAndCancel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testOfMethod - 2018.11.22 at 16h 07m 05s.xml">
-      <configuration name="FirstTest.testOfMethod" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearchAndCancel - 2018.11.22 at 19h 13m 57s.xml">
+      <configuration name="FirstTest.testSearchAndCancel" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FirstTest_testOfMethod - 2018.11.22 at 16h 07m 47s.xml">
-      <configuration name="FirstTest.testOfMethod" configurationId="JUnit" />
+    <history-entry file="FirstTest_testSearchAndCancel - 2018.11.22 at 19h 14m 34s.xml">
+      <configuration name="FirstTest.testSearchAndCancel" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -324,14 +346,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30558598" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4984" visible="true" weight="0.30558598" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39978093" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32968238" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.23110624" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5016" side_tool="true" weight="0.30558598" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.5768" weight="0.3274918" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32858709" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -385,16 +407,30 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lesson2" />
     <MESSAGE value="try create branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="try create branch" />
+    <MESSAGE value="Lesson2_Homework1&#10;Создал метод isTextOfSearchAvailable&#10;А также тест testOfMethod, которым проверял работу метода" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson2_Homework1&#10;Создал метод isTextOfSearchAvailable&#10;А также тест testOfMethod, которым проверял работу метода" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/FirstTest.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/FirstTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="191" column="26" lean-forward="true" selection-start-line="191" selection-start-column="26" selection-end-line="191" selection-end-column="26" />
+        <state relative-caret-position="161">
+          <caret line="161" column="35" selection-start-line="161" selection-start-column="35" selection-end-line="161" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#firstTest#0;class#FirstTest#0" />
+            <element signature="method#testCompareArticleTitle#0;class#FirstTest#0" />
           </folding>
         </state>
       </provider>

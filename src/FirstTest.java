@@ -133,6 +133,56 @@ public class FirstTest {
         );
     }
 
+    @Test
+    public void testSearchAndCancel()
+    {
+        String textForTest = "DethKlock";
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find 'Search Wikipedia' input",
+                5
+        );
+
+        waitForElementAndSendKeys(
+                By.xpath("//*[contains(@text, 'Search…')]"),
+                textForTest,
+                "Cannot find search input",
+                5
+        );
+
+        waitForElementPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = 'Animated American metal band']"),
+                "Cannot find first element of listView",
+                5
+        );
+
+        waitForElementPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = 'Redirected from Dethklok game']"),
+                "Cannot find second element of listView",
+                5
+        );
+
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "Cannot find X to cancel search",
+                5
+        );
+
+        waitForElementNotPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = 'Animated American metal band']"),
+                "First element of listView still able",
+                5
+        );
+
+        waitForElementNotPresent(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = 'Redirected from Dethklok game']"),
+                "Second element of listView still able",
+                5
+        );
+    }
+
+
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
