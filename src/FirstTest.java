@@ -132,6 +132,7 @@ public class FirstTest {
                 article_title
         );
     }
+
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -174,5 +175,35 @@ public class FirstTest {
         WebElement element = waitForElementPresent(by, error_message, timeoutInSeconds);
         element.clear();
         return element;
+    }
+
+    private void isTextOfSearchAvailable()
+    {
+        WebElement textBoxForSearch = waitForElementPresent(
+                By.id("org.wikipedia:id/search_src_text"),
+                "Cannot find textbox for Search",
+                5
+        );
+
+        String textInTextBox = textBoxForSearch.getAttribute("text");
+
+        Assert.assertEquals(
+                "There is no text 'Search…'",
+                "Search…",
+                textInTextBox
+        );
+
+    }
+
+    @Test
+    public void testOfMethod()
+    {
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find 'Search Wikipedia' input",
+                5
+        );
+
+        isTextOfSearchAvailable();
     }
 }
