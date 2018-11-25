@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
+import java.util.List;
 
 public class FirstTest {
 
@@ -134,33 +135,49 @@ public class FirstTest {
     }
 
     @Test
-    public void testSearchAndCancel()
+    public void testOfMethod() // test for lesson2 homework1
     {
-        String textForTest = "DethKlock";
-
         waitForElementAndClick(
                 By.id("org.wikipedia:id/search_container"),
                 "Cannot find 'Search Wikipedia' input",
                 5
         );
 
+        isTextOfSearchAvailable();
+    }
+
+    @Test
+    public void testSearchAndCancel() // lesson2 homework2
+    {
+        String textForTest = "dethklock";
+// ищем поиск и кликаем
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find 'Search Wikipedia' input",
+                5
+        );
+// пишем запрос
         waitForElementAndSendKeys(
                 By.xpath("//*[contains(@text, 'Search…')]"),
                 textForTest,
                 "Cannot find search input",
                 5
         );
-
+// убеждаемся что есть хотя бы один контейнер
         waitForElementPresent(
-                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = 'Animated American metal band']"),
+                By.id("org.wikipedia:id/page_list_item_container"),
                 "Cannot find first element of listView",
                 5
         );
-
-        waitForElementPresent(
-                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = 'Redirected from Dethklok game']"),
-                "Cannot find second element of listView",
-                5
+// создаем список всех контейнеров с результатами запроса
+        List<WebElement> allContainers = driver.findElements(
+                By.id("org.wikipedia:id/page_list_item_container")
+        );
+        int count = allContainers.size();
+        System.out.println("Results found: " + count);
+        Assert.assertTrue(
+                "It would be more than one result",
+                count > 1
         );
 
         waitForElementAndClick(
@@ -168,20 +185,60 @@ public class FirstTest {
                 "Cannot find X to cancel search",
                 5
         );
-
         waitForElementNotPresent(
-                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = 'Animated American metal band']"),
-                "First element of listView still able",
-                5
-        );
-
-        waitForElementNotPresent(
-                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = 'Redirected from Dethklok game']"),
-                "Second element of listView still able",
+                By.id("org.wikipedia:id/page_list_item_container"),
+                "Some result still shown",
                 5
         );
     }
 
+    @Test
+    public void testSearchWordAtAllResults() // lesson2 homework3
+    {
+        String textForTest = "Marvel";
+// ищем поиск и кликаем
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "Cannot find 'Search Wikipedia' input",
+                5
+        );
+// пишем запрос
+        waitForElementAndSendKeys(
+                By.xpath("//*[contains(@text, 'Search…')]"),
+                textForTest,
+                "Cannot find search input",
+                5
+        );
+// создаем список всех контейнеров с результатами запроса
+        List<WebElement> allContainers = driver.findElements(
+                By.id("org.wikipedia:id/page_list_item_container")
+        );
+        System.out.println("Results found: " + allContainers.size());
+
+        for (WebElement itemFounded : allContainers)
+        {
+            int number = allContainers.indexOf(itemFounded);
+            String compositeText = "";
+            System.out.println("Result " + number + ":");
+// для каждого контейнера с результатом выведем весь текст из ячеек TextView
+// так как текст может быть в заголовке, в описании, а может и в редиректе.. мало ли где чем ещё.
+            List<WebElement> itemWithText = itemFounded.findElements(By.className("android.widget.TextView"));
+            for (WebElement textBox : itemWithText)
+            {
+//                int number2 = itemWithText.indexOf(textBox);
+                String textOfElement = textBox.getText().toLowerCase();
+//                System.out.println(number + " " + number2 + " с текстом: " + textOfElement);
+                compositeText = compositeText + " | " + textOfElement;
+            }
+            System.out.println(compositeText);
+            int index  = compositeText.indexOf(textForTest.toLowerCase());
+//            System.out.println(index);
+            Assert.assertTrue(
+                    "Every result has contain \"" + textForTest + "\"",
+                    index != -1
+            );
+        }
+    }
 
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
@@ -227,7 +284,7 @@ public class FirstTest {
         return element;
     }
 
-    private void isTextOfSearchAvailable()
+    private void isTextOfSearchAvailable() //lesson2 homework1
     {
         WebElement textBoxForSearch = waitForElementPresent(
                 By.id("org.wikipedia:id/search_src_text"),
@@ -245,15 +302,5 @@ public class FirstTest {
 
     }
 
-    @Test
-    public void testOfMethod()
-    {
-        waitForElementAndClick(
-                By.id("org.wikipedia:id/search_container"),
-                "Cannot find 'Search Wikipedia' input",
-                5
-        );
 
-        isTextOfSearchAvailable();
-    }
 }
