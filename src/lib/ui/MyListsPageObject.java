@@ -34,7 +34,7 @@ public class MyListsPageObject extends MainPageObject {
         );
     }
 
-    public void waitForArticleToApearByTitle(String article_title)
+    public void waitForArticleToAppearByTitle(String article_title)
     {
         String article_xpath = getFolderXpathByName(article_title);
         this.waitForElementPresent(
@@ -44,7 +44,7 @@ public class MyListsPageObject extends MainPageObject {
         );
     }
 
-    public void waitForArticleToDisapearByTitle(String article_title)
+    public void waitForArticleToDisappearByTitle(String article_title)
     {
         String article_xpath = getFolderXpathByName(article_title);
         this.waitForElementNotPresent(
@@ -56,12 +56,12 @@ public class MyListsPageObject extends MainPageObject {
 
     public void swipeByArticleToDelete(String article_title)
     {
-        this.waitForArticleToApearByTitle(article_title);
+        this.waitForArticleToAppearByTitle(article_title);
         String article_xpath = getFolderXpathByName(article_title);
         this.swipeElementToLeft(
                 By.xpath(article_xpath),
                 "Cannot find saved article"
         );
-        this.waitForArticleToDisapearByTitle(article_title);
+        this.waitForArticleToDisappearByTitle(article_title);
     }
 }

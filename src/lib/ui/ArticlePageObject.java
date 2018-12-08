@@ -43,7 +43,29 @@ public class ArticlePageObject extends MainPageObject {
         );
     }
 
-    public void addArticleToMyList(String name_of_folder)
+
+    public void addArticleToMyList (String name_of_folder)
+    {
+        this.waitForElementAndClick(
+                By.xpath(OPTIONS_BUTTON),
+                "Cannot find button to open article options",
+                300
+        );
+
+        this.waitForElementAndClick(
+                By.xpath(OPTIONS_ADD_TO_MY_LIST_BUTTON),
+                "Cannot find option to add article to reading list",
+                5
+        );
+
+        this.waitForElementAndClick(
+                By.xpath("//*[@text='"+name_of_folder+"']"),
+                "Cannot find created folder",
+                15
+        );
+    }
+
+    public void addArticleToMyListFirstTime(String name_of_folder)
     {
         this.waitForElementAndClick(
                 By.xpath(OPTIONS_BUTTON),
@@ -81,6 +103,7 @@ public class ArticlePageObject extends MainPageObject {
                 "Cannot press OK button",
                 5
         );
+
     }
 
     public void closeArticle()
@@ -91,4 +114,6 @@ public class ArticlePageObject extends MainPageObject {
                 5
         );
     }
+
+
 }

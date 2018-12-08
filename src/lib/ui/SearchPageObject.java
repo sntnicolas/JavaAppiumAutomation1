@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class SearchPageObject extends MainPageObject{
 
     private static final String
@@ -101,9 +103,16 @@ public class SearchPageObject extends MainPageObject{
         "We supposed not to find any results");
     }
 
-    public void isTheTextInTheElement (WebElement webElement, By by, String search_text)
+    public int findTextInWebElement (WebElement webElement, String search_text)
     {
-
+        String compositeText = "";
+        List<WebElement> webElements = webElement.findElements(By.className("android.widget.TextView"));
+        for (WebElement textBox : webElements)
+        {
+            String textOfElement = textBox.getText().toLowerCase();
+            compositeText = (compositeText + " | " + textOfElement).toLowerCase();
+        }
+        int index  = compositeText.indexOf(search_text.toLowerCase());
+        return index;
     }
-
 }
