@@ -71,7 +71,7 @@ public class CoreTestCase extends TestCase {
         } else {
             throw new Exception("Cannot get run platform from env variable. Platform value " + platform);
         }
-        capabilities.setCapability("orientation", "LANDSCAPE"); // Lesson3 HomeWork3 - Ex.7
+        capabilities.setCapability("orientation", "PORTRAIT"); // Lesson3 HomeWork3 - Ex.7
         return capabilities;
     }
 
