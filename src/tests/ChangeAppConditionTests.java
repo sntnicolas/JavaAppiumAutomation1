@@ -2,6 +2,7 @@ package tests;
 
 import lib.CoreTestCase;
 import lib.ui.ArticlePageObject;
+import lib.ui.NavigationUI;
 import lib.ui.SearchPageObject;
 import org.junit.Test;
 
@@ -48,22 +49,5 @@ public class ChangeAppConditionTests extends CoreTestCase {
         this.backgroundApp(2);
         SearchPageObject.waitForSearchResult("British jockey");
     }
-
-
-
-
-
-//    @Test
-//    public void testOrientation()// Lesson3 HomeWork3 (Ex.7)
-//    {
-//        System.out.println(driver.getOrientation().toString());
-//
-//        MainPageObject.waitForElementPresent(
-//                By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
-//                "Cannot find search Wikipedia input",
-//                5
-//        );
-
-
 
 }

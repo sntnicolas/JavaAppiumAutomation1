@@ -13,6 +13,9 @@ public class SearchPageObject extends MainPageObject{
         SEARCH_INPUT = "//*[contains(@text, 'Search…')]",
         SEARCH_CANCEL_BUTTON = "org.wikipedia:id/search_close_btn",
         SEARCH_RESULT_BY_SUBSTRING_TPL = "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = '{SUBSTRING}']",
+        SEARCH_RESULT_BY_TITLE_AND_DESC_TPL =
+        "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = '{TITLE}'] and " +
+        "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text = '{DESCRIPTION}']",
         SEARCH_RESULT_ELEMENT = "//*[@resource-id='org.wikipedia:id/search_results_list']/*[@resource-id='org.wikipedia:id/page_list_item_container']",
         SEARCH_EMPTY_RESULT_ELEMENT = "//*[@text='No results found']";
 
@@ -25,7 +28,15 @@ public class SearchPageObject extends MainPageObject{
     {
         return SEARCH_RESULT_BY_SUBSTRING_TPL.replace("{SUBSTRING}", substring);
     }
+
+    private static String getResultSearchElementByTitleAndDescription (String title, String description)
+    {
+        return SEARCH_RESULT_BY_TITLE_AND_DESC_TPL.replace("{TITLE}", title).replace("{DESCRIPTION}", description);
+    }
+
+
     /* TEMPLATES METHODS */
+
     public void initSearchInput()
     {
         this.waitForElementAndClick(By.xpath(SEARCH_INIT_ELEMENT),
@@ -114,5 +125,13 @@ public class SearchPageObject extends MainPageObject{
         }
         int index  = compositeText.indexOf(search_text.toLowerCase());
         return index;
+    }
+
+    public void waitForElementByTitleAndDescription(String title, String description)
+    {
+        String search_result_title = getResultSearchElementByTitleAndDescription(title, description);
+        this.waitForElementPresent(By.xpath(search_result_title),
+                "Cannot find and click search result with title: " + title + "/n and description: " + description,
+                10);
     }
 }
