@@ -98,4 +98,29 @@ public class SearchTests extends CoreTestCase {
         }
     }
 
+    @Test
+    public void testSearchThreePredefinedResults() // lesson4_homework2 - Ex.9*
+    {
+        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject.initSearchInput();
+        String search_line = "Marvel";
+        SearchPageObject.typeSearchLine(search_line);
+        assertTrue(
+                "We need at least 3 articles in results.",
+                SearchPageObject.getAmountOfFoundedArticles() > 2
+        );
+        String
+                title1="Marvel",
+                title2="Marvel Comics",
+                title3="Marvel Cinematic Universe",
+                description1="Wikimedia disambiguation page",
+                description2="Company that publishes comic books and related media",
+                description3="Film franchise and shared fictional universe";
+
+        SearchPageObject.waitForElementByTitleAndDescription(title1, description1);
+        SearchPageObject.waitForElementByTitleAndDescription(title2, description2);
+        SearchPageObject.waitForElementByTitleAndDescription(title3, description3);
+    }
+
+
 }
