@@ -1,6 +1,7 @@
 package tests;
 
 import lib.CoreTestCase;
+import lib.ui.Factories.SearchPageObjectFactory;
 import lib.ui.SearchPageObject;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,7 +14,7 @@ public class SearchTests extends CoreTestCase {
     @Test
     public void testSearch()
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Meriel Tufnell");
@@ -23,7 +24,7 @@ public class SearchTests extends CoreTestCase {
     @Test
     public void testCancelSearch()
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
         SearchPageObject.waitForCancelButtonToAppear();
@@ -35,7 +36,7 @@ public class SearchTests extends CoreTestCase {
     @Test
     public void testAmountOfNotEmptySearch() //lesson3.5
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         String search_line = "Linkin Park Diskography";
         SearchPageObject.typeSearchLine(search_line);
@@ -50,7 +51,7 @@ public class SearchTests extends CoreTestCase {
     @Test
     public void testAmountEmptyOfSearch() // lesson3.6
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         String search_line = "gi54h9gh45gh";
         SearchPageObject.typeSearchLine(search_line);
@@ -62,7 +63,7 @@ public class SearchTests extends CoreTestCase {
     @Test
     public void testSearchAndCancel() // lesson2 homework2 (Ex.3) refactored
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         String search_line = "dethklock";
         SearchPageObject.typeSearchLine(search_line);
@@ -78,7 +79,7 @@ public class SearchTests extends CoreTestCase {
     @Test
     public void testSearchWordAtAllResults() // lesson2 homework3 (Ex.4) refactored
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         String search_line = "Marvel"; // dethklok для фейла теста
         SearchPageObject.typeSearchLine(search_line);
@@ -101,7 +102,7 @@ public class SearchTests extends CoreTestCase {
     @Test
     public void testSearchThreePredefinedResults() // lesson4_homework2 - Ex.9*
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
         SearchPageObject.initSearchInput();
         String search_line = "Marvel";
         SearchPageObject.typeSearchLine(search_line);

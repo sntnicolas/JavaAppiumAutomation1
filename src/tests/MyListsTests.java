@@ -2,6 +2,8 @@ package tests;
 
 import lib.CoreTestCase;
 import lib.ui.ArticlePageObject;
+import lib.ui.Factories.ArticlePageObjectFactory;
+import lib.ui.Factories.SearchPageObjectFactory;
 import lib.ui.MyListsPageObject;
 import lib.ui.NavigationUI;
 import lib.ui.SearchPageObject;
@@ -12,17 +14,17 @@ public class MyListsTests extends CoreTestCase {
     @Test
     public void testSaveFirstArticleForMyList() // lesson3.3-3.4
     {
-        SearchPageObject SearchPageObject = new SearchPageObject(driver);
+        SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
 
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Meriel Tufnell");
         SearchPageObject.clickByArticleWithSubstring("British jockey");
 
-        ArticlePageObject ArticlePageObject = new ArticlePageObject(driver);
+        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
         ArticlePageObject.waitForTitleElement();
         String article_title = ArticlePageObject.getArticleTitle();
         String name_of_folder = "Learning programming";
-        ArticlePageObject.addArticleToMyList(name_of_folder);
+        ArticlePageObject.addArticleToMyListFirstTime(name_of_folder);
         ArticlePageObject.closeArticle();
 
         NavigationUI NavigationUI = new NavigationUI(driver);
