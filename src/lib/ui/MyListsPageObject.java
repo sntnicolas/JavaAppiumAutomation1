@@ -1,7 +1,7 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
+import lib.Platform;
 
 abstract public class MyListsPageObject extends MainPageObject {
 
@@ -36,7 +36,7 @@ abstract public class MyListsPageObject extends MainPageObject {
 
     public void waitForArticleToAppearByTitle(String article_title)
     {
-        String article_xpath = getFolderXpathByName(article_title);
+        String article_xpath = getSavedArticleXpathByTitle(article_title);
         this.waitForElementPresent(
                 article_xpath,
                 "Cannot find saved article by title " + article_title,
@@ -46,7 +46,7 @@ abstract public class MyListsPageObject extends MainPageObject {
 
     public void waitForArticleToDisappearByTitle(String article_title)
     {
-        String article_xpath = getFolderXpathByName(article_title);
+        String article_xpath = getSavedArticleXpathByTitle(article_title);
         this.waitForElementNotPresent(
                 article_xpath,
                 "Saved article still present with title " + article_title,
@@ -57,11 +57,18 @@ abstract public class MyListsPageObject extends MainPageObject {
     public void swipeByArticleToDelete(String article_title)
     {
         this.waitForArticleToAppearByTitle(article_title);
-        String article_xpath = getFolderXpathByName(article_title);
+//        System.out.println("wait success");
+        String article_xpath = getSavedArticleXpathByTitle(article_title);
+//        System.out.println("get article xpath success");
         this.swipeElementToLeft(
                 article_xpath,
                 "Cannot find saved article"
         );
+//        System.out.println("swipe success");
+        if(Platform.getInstance().isIOS()){
+        this.clickElementToTheRightUpperCorner(article_xpath, "Cannot find saved article");
+        }
         this.waitForArticleToDisappearByTitle(article_title);
+//        System.out.println("article is really deleted");
     }
 }

@@ -7,7 +7,9 @@ public class iOSMyListsPageObject extends MyListsPageObject
 {
     static
     {
-        ARTICLE_BY_TITLE_TPL = "xpath://XCUIElementTypeLink[contains(@name='{TITLE}')]";
+        //ARTICLE_BY_TITLE_TPL = "xpath://XCUIElementTypeLink[@name='{TITLE}']";
+        ARTICLE_BY_TITLE_TPL = "xpath://XCUIElementTypeLink[contains(@name, '{TITLE}')]";
+        //ARTICLE_BY_TITLE_TPL = "xpath://XCUIElementTypeLink[@name='Meriel Tufnell British jockey']"
     }
 
     public iOSMyListsPageObject(AppiumDriver driver)
