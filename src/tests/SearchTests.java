@@ -73,7 +73,7 @@ public class SearchTests extends CoreTestCase {
                 amount_of_search_results > 0
         );
         SearchPageObject.clickCancelSearch();
-        SearchPageObject.waitForEmptyResultsLabel();
+        SearchPageObject.assertThereIsNoResultOfSearch();
     }
 
     @Test

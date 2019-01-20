@@ -48,11 +48,19 @@ abstract public class ArticlePageObject extends MainPageObject {
 
     public void swipeToFooter()
     {
-        this.swipeUpToFindElement(
-                FOOTER_ELEMENT,
-                "Cant find the end of article",
-                20
-        );
+        if (Platform.getInstance().isAndroid()) {
+            this.swipeUpToFindElement(
+                    FOOTER_ELEMENT,
+                    "Cant find the end of article",
+                    40
+            );
+        } else {
+            this.swipeUpTillElementAppear(
+                    FOOTER_ELEMENT,
+                    "Cant find the end of article",
+                    40
+            );
+        }
     }
 
 
@@ -123,9 +131,30 @@ abstract public class ArticlePageObject extends MainPageObject {
         this.waitForElementAndClick(
                 CLOSE_ARTICLE_BUTTON,
                 "Cannot close article, cannot find X link",
+                30
+        );
+    }
+
+    public void addArticleToMySaved()
+    {
+        this.waitForElementAndClick(
+                OPTIONS_ADD_TO_MY_LIST_BUTTON,
+                "Cannot find option to add article to reading list",
                 5
         );
     }
 
-
+    public void addArticleToMySavedFirstTime()
+    {
+        this.waitForElementAndClick(
+                OPTIONS_ADD_TO_MY_LIST_BUTTON,
+                "Cannot find option to add article to reading list",
+                5
+        );
+        this.waitForElementAndClick(
+                MY_LIST_OK_BUTTON,
+                "Cannot find close button for sync window",
+                10
+        );
+    }
 }

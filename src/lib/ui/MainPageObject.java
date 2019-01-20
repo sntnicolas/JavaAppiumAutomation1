@@ -8,7 +8,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import lib.Platform;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -32,24 +32,23 @@ public class MainPageObject {
         );
     }
 
-    public WebElement waitForElementPresent123(String locator, String error_message, long timeoutInSeconds)
+ /*   public WebElement waitForElementPresent123(String locator, String error_message, long timeoutInSeconds)
     {
-        System.out.println(By.xpath(".//*[contains(@text, 'Search Wikipedia')]"));
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
         wait.withMessage(error_message + "\n");
         return wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[contains(@text, 'Search Wikipedia')]"))
         );
-    }
+    }*/
 
     public WebElement waitForElementPresent(String locator, String error_message)
     {
-        return waitForElementPresent123(locator, error_message, 5);
+        return waitForElementPresent(locator, error_message, 5);
     }
 
     public WebElement waitForElementAndClick(String locator, String error_message, long timeoutInSeconds)
     {
-        WebElement element = waitForElementPresent123(locator, error_message, timeoutInSeconds);
+        WebElement element = waitForElementPresent(locator, error_message, timeoutInSeconds);
         element.click();
         return element;
     }
@@ -132,6 +131,32 @@ public class MainPageObject {
         }
     }
 
+    public void swipeUpTillElementAppear(String locator, String error_message, int max_swipes)
+    {
+        int already_swiped = 0;
+
+        while (!this.isElementLocatedOnTheScreen(locator))
+        {
+            if (already_swiped > max_swipes){
+                Assert.assertTrue(error_message, this.isElementLocatedOnTheScreen(locator));
+            }
+
+            swipeUpQuick();
+            ++already_swiped;
+        }
+    }
+
+    public boolean isElementLocatedOnTheScreen (String locator)
+    {
+        int element_located_by_y = this.waitForElementPresent(
+                locator,
+                "Cannot find element by locator",
+                10)
+                .getLocation().getY();
+        int screen_size_by_y = driver.manage().window().getSize().getHeight();
+        return element_located_by_y < screen_size_by_y;
+    }
+
     public void swipeElementToLeft (String locator, String error_message)
     {
         WebElement element = waitForElementPresent(locator, error_message, 10);
@@ -142,12 +167,17 @@ public class MainPageObject {
         int middle_y = (upper_y + lower_y) / 2;
 
         TouchAction action = new TouchAction(driver);
-        action.press(right_x*2, middle_y).
+        action.press(right_x*2, middle_y);
 // так как мы ищем элемент с текстом, а он часто короткий, то пока сделал множитель 2 (иначе длина свайпа маленькая)
-        waitAction(2000).
-                moveTo(left_x,middle_y).
-                release().
-                perform();
+        action.waitAction(2000);
+        if (Platform.getInstance().isAndroid()){
+            action.moveTo(left_x,middle_y);
+        } else {
+            int offset_x = (-1 * element.getSize().getWidth());
+            action.moveTo(offset_x, 0);
+        }
+        action.release();
+        action.perform();
     }
 
     public int getAmountOfElements(String locator)

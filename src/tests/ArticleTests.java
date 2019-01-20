@@ -3,6 +3,8 @@ package tests;
 import lib.CoreTestCase;
 import lib.ui.ArticlePageObject;
 import lib.ui.Factories.ArticlePageObjectFactory;
+import lib.ui.Factories.MyListsPageObjectFactory;
+import lib.ui.Factories.NavigationUIFactory;
 import lib.ui.Factories.SearchPageObjectFactory;
 import lib.ui.MyListsPageObject;
 import lib.ui.NavigationUI;
@@ -40,8 +42,8 @@ public class ArticleTests extends CoreTestCase {
         SearchPageObject.clickByArticleWithSubstring("British jockey");
 
         ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
-        ArticlePageObject.waitForTitleElement();
-        ArticlePageObject.swipeToFooter();
+        ArticlePageObject.waitForTitleElement(); // в иос не работает пока что, т.к. вебдрайвер не находит текст
+        ArticlePageObject.swipeToFooter(); // иосный свайп не работает - надо разбираться
     }
 
     public void testSaveTwoArticlesToMyList() // Lesson3 HomeWork1 (Ex.5) - refactored
@@ -67,10 +69,10 @@ public class ArticleTests extends CoreTestCase {
         ArticlePageObject.addArticleToMyCreatedList(folder_name);
         ArticlePageObject.closeArticle();
 
-        NavigationUI NavigationUI = new NavigationUI(driver);
+        NavigationUI NavigationUI =  NavigationUIFactory.get(driver);
         NavigationUI.clickMyLists();
 
-        MyListsPageObject MyListsPageObject = new MyListsPageObject(driver);
+        MyListsPageObject MyListsPageObject = MyListsPageObjectFactory.get(driver);
         MyListsPageObject.openFolderByName(folder_name);
         MyListsPageObject.swipeByArticleToDelete(article_title1);
         MyListsPageObject.waitForArticleToAppearByTitle(article_title2);

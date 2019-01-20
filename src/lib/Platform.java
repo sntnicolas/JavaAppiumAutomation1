@@ -62,8 +62,8 @@ public class Platform {
     {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("deviceName", "iPhone SE 12.1");
-        capabilities.setCapability("platformVersion", "12.1");
+        capabilities.setCapability("deviceName", "iPhone SE");
+        capabilities.setCapability("platformVersion", "11.4");
         //capabilities.setCapability("app", "c:\\Course2\\JavaAppiumAutomation1\\apks\\org.wikipedia.apk");
         capabilities.setCapability("app", "/Users/nicolas/Desktop/JavaAppiumAutomation1/apks/Wikipedia.app");
         return capabilities;
